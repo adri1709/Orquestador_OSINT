@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Orquestador OSINT - Web UI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="terminal">
+    <h1>ORQUESTADOR OSINT</h1>
+
+    <section class="controls">
+      <label>Tipo:
+        <select id="type">
+          <option value="domain">Dominio</option>
+          <option value="username">Usuario</option>
+          <option value="phone">Teléfono</option>
+          <option value="ip">IP / Shodan</option>
+          <option value="images">Imágenes (subir)</option>
+        </select>
+      </label>
+
+      <label id="valueLabel">Valor:
+        <input id="value" type="text" placeholder="example.com / username / phone / IP" />
+      </label>
+
+      <label id="filesLabel" style="display:none">Archivos:
+        <input id="files" type="file" multiple accept="image/*" />
+      </label>
+
+      <div class="actions">
+        <button id="run">Ejecutar</button>
+        <button id="clear">Limpiar</button>
+        <button id="downloadPdf" style="display:none">Descargar PDF</button>
+        <button id="correlateBtn" style="display:none">Correlacionar Datos</button>
+        <button id="downloadGraph" style="display:none">Descargar Grafo</button>
+      </div>
+    </section>
+
+    <section class="output">
+      <pre id="out">{ waiting }</pre>
+    </section>
+
+    <footer class="footer">Copyright © 2025 Adrian Hermosilla, Hugo Garcia, Alvaro Valero</footer>
+  </main>
+
+<script>
+const typeEl = document.getElementById('type');
+const valueEl = document.getElementById('value');
+const filesEl = document.getElementById('files');
+const valueLabel = document.getElementById('valueLabel');
+const filesLabel = document.getElementById('filesLabel');
+const out = document.getElementById('out');
+const downloadBtn = document.getElementById('downloadPdf');
+const correlateBtn = document.getElementById('correlateBtn');
+const downloadGraphBtn = document.getElementById('downloadGraph');
+
+let currentPdfId = null;
+
+typeEl.addEventListener('change', ()=> {
+  if (typeEl.value === 'images') {
+    valueLabel.style.display = 'none';
+    filesLabel.style.display = 'block';
+  } else {
+    valueLabel.style.display = 'block';
+    filesLabel.style.display = 'none';
+  }
+});
+
+document.getElementById('run').addEventListener('click', async () => {
+  out.textContent = '{ running... }';
+  downloadBtn.style.display = 'none';
+  correlateBtn.style.display = 'none';
+  downloadGraphBtn.style.display = 'none';
+  currentPdfId = null;
+  const type = typeEl.value;
+
+  try {
+    let resp;
+    if (type === 'images') {
+      const fd = new FormData();
+      fd.append('type', 'images');
+      const files = filesEl.files;
+      if (files.length === 0) {
+        out.textContent = 'Error: No se han seleccionado archivos';
+        return;
+      }
+      for (let i=0; i<files.length; i++) {
+        fd.append('files', files[i]);
+      }
+      resp = await fetch('/api/scan', { method: 'POST', body: fd });
+    } else {
+      const value = valueEl.value.trim();
+      if (!value) {
+        out.textContent = 'Error: Debe introducir un valor';
+        return;
+      }
+      
+      const body = { type, value };
+      resp = await fetch('/api/scan', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+    }
+    
+    if (!resp.ok) {
+      const errorData = await resp.json();
+      out.textContent = 'Error: ' + (errorData.error || resp.statusText);
+      return;
+    }
+    
+    const data = await resp.json();
+    out.textContent = JSON.stringify(data, null, 2);
+    
+    if (data.pdf_id) {
+      currentPdfId = data.pdf_id;
+      downloadBtn.style.display = 'inline-block';
+      correlateBtn.style.display = 'inline-block';
+    }
+  } catch (e) {
+    out.textContent = 'Error: ' + e.toString();
+    console.error(e);
+  }
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (currentPdfId) {
+    window.location.href = `/api/download_pdf/${currentPdfId}`;
+  }
+});
+
+correlateBtn.addEventListener('click', async () => {
+  if (!currentPdfId) return;
+  
+  out.textContent = '{ correlating data... }';
+  
+  try {
+    const resp = await fetch(`/api/correlate/${currentPdfId}`);
+    if (!resp.ok) {
+      const errorData = await resp.json();
+      out.textContent = 'Error en correlación: ' + (errorData.error || resp.statusText);
+      return;
+    }
+    
+    const corrData = await resp.json();
+    out.textContent = JSON.stringify(corrData, null, 2);
+    
+    if (corrData.graph && corrData.graph.graph_file) {
+      downloadGraphBtn.style.display = 'inline-block';
+    }
+  } catch (e) {
+    out.textContent = 'Error: ' + e.toString();
+  }
+});
+
+downloadGraphBtn.addEventListener('click', () => {
+  if (currentPdfId) {
+    window.location.href = `/api/download_graph/${currentPdfId}`;
+  }
+});
+
+document.getElementById('clear').addEventListener('click', ()=> {
+  out.textContent = '{ waiting }';
+  valueEl.value = '';
+  filesEl.value = '';
+  downloadBtn.style.display = 'none';
+  correlateBtn.style.display = 'none';
+  downloadGraphBtn.style.display = 'none';
+  currentPdfId = null;
+});
+</script>
+</body>
+</html>
