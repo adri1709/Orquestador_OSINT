@@ -37,7 +37,7 @@ La interfaz web permite seleccionar el tipo de análisis y visualizar los result
   - Teléfono
   - IP / Shodan
   - Imágenes (subida de archivos)
-![Texto alternativo](images/1.jpg)
+![Texto alternativo](images/1.png)
 
 
 
@@ -48,11 +48,11 @@ La interfaz web permite seleccionar el tipo de análisis y visualizar los result
 3. Haz clic en "Ejecutar" para iniciar el análisis.
 4. Los resultados se mostrarán en la sección de salida.
 
-![Texto alternativo](images/2.jpg)
-![Texto alternativo](images/6.jpg)
-![Texto alternativo](images/9.jpg)
-![Texto alternativo](images/11.jpg)
-![Texto alternativo](images/14.jpg)
+![Texto alternativo](images/2.png)
+![Texto alternativo](images/6.png)
+![Texto alternativo](images/9.png)
+![Texto alternativo](images/11.png)
+![Texto alternativo](images/14.png)
 
 
 ## Generación de Informes PDF
@@ -61,11 +61,11 @@ Tras realizar un análisis, puedes descargar un informe en PDF con los resultado
 
 - Haz clic en "Descargar PDF" cuando el botón esté disponible.
 
-![Texto alternativo](images/3.jpg)
-![Texto alternativo](images/7.jpg)
-![Texto alternativo](images/10.jpg)
-![Texto alternativo](images/12.jpg)
-![Texto alternativo](images/15.jpg)
+![Texto alternativo](images/3.png)
+![Texto alternativo](images/7.png)
+![Texto alternativo](images/10.png)
+![Texto alternativo](images/12.png)
+![Texto alternativo](images/15.png)
 
 
 ## Correlación de Datos y Grafo
@@ -75,9 +75,9 @@ La herramienta permite correlacionar entidades encontradas y visualizar las rela
 - Haz clic en "Correlacionar Datos" para generar el informe de correlación.
 - Si hay suficientes datos, podrás descargar la imagen del grafo.
 
-![Texto alternativo](images/5.jpg)
-![Texto alternativo](images/8.jpg)
-![Texto alternativo](images/13.jpg)
+![Texto alternativo](images/5.png)
+![Texto alternativo](images/8.png)
+![Texto alternativo](images/13.png)
 Las capturas que no estan aañdidas es por falta de información para crear el grafo
 
 ## Módulos Incluidos
