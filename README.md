@@ -78,7 +78,7 @@ La herramienta permite correlacionar entidades encontradas y visualizar las rela
 ![Texto alternativo](images/5.png)
 ![Texto alternativo](images/8.png)
 ![Texto alternativo](images/13.png)
-Las capturas que no estan aañdidas es por falta de información para crear el grafo
+Las capturas que no estan añdidas es por falta de información para crear el grafo
 
 ## Módulos Incluidos
 
