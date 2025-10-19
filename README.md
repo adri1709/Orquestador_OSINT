@@ -11,8 +11,9 @@
 
 Orquestador OSINT es una herramienta modular para realizar análisis OSINT sobre dominios, usuarios, teléfonos, direcciones IP y metadatos de imágenes. Permite obtener información relevante y generar informes en PDF, así como visualizar correlaciones entre entidades.
 
-
-
+## Requisitos previos
+ - Python 3.12.9
+Enlace de descarga: https://www.python.org/downloads/release/python-3129/
 ## Instalación
 
 1. Abre una terminal en la carpeta del proyecto.
