@@ -1,0 +1,20 @@
+:root {
+  --bg: #0b0f0b;
+  --panel: #071009;
+  --accent: #03e47a;
+  --muted: #75c79a;
+  --mono: "Courier New", Courier, monospace;
+}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#020202,#051005);font-family:var(--mono);color:var(--muted)}
+.terminal{max-width:1000px;margin:24px auto;padding:18px;background:rgba(0,0,0,0.45);border:1px solid rgba(3,228,122,0.06);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.terminal h1{color:var(--accent);margin:0 0 12px 0;font-size:28px;letter-spacing:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0}
+.controls label{display:inline-flex;flex-direction:column;font-size:13px;color:#9fdcb4}
+.controls input[type="text"], .controls select{background:#021004;color:var(--muted);border:1px solid #033a27;padding:8px;border-radius:4px;min-width:260px}
+.small{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.actions{margin-top:8px}
+.actions button{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:8px 12px;margin-right:6px;border-radius:4px;cursor:pointer}
+.actions button:hover{background:rgba(3,228,122,0.06)}
+.output{margin-top:12px;background:var(--panel);padding:12px;border-radius:6px;border:1px solid rgba(3,228,122,0.06)}
+.output pre{white-space:pre-wrap;color:#bfffd7;font-size:12px}
+.footer{margin-top:12px;font-size:12px;color:#4f8b6b}

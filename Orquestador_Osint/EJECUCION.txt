@@ -1,0 +1,6 @@
+PARA EJECUTAR CORRECTAMENTE EL PROGRAMA
+
+1: ABRIR TERMINAL
+2: pip install -r requirements.txt
+3: python webui\app.py
+4: Eso levanta un servidor (http://127.0.0.1:5000) y accediendo ya se puede usar todo.
