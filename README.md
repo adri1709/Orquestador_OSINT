@@ -15,9 +15,6 @@ Orquestador OSINT es una herramienta modular para realizar análisis OSINT sobre
  - Python 3.12.9
 Enlace de descarga: https://www.python.org/downloads/release/python-3129/
 ## Instalación
-Video explicativo del orquestador:
-
-https://tajamar365-my.sharepoint.com/:v:/p/alvaro_valero/EQv_hpne1r5CtjJgzufqEPMBuj96cHsrLnnLQzclXJkQXw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ixJ0p2
 
 1. Abre una terminal en la carpeta del proyecto.
 2. Instala las dependencias necesarias:
@@ -94,7 +91,3 @@ Las capturas que no estan añdidas es por falta de información para crear el gr
 - Shodan: Información sobre IPs y servicios expuestos.
 - EXIF: Metadatos de imágenes.
 
-
-
-
-Desarrollado por Adrian Hermosilla, Hugo Garcia y Alvaro Valero.
