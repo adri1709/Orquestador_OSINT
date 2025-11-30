@@ -1,4 +1,18 @@
-# Orquestador OSINT - Guía de Uso
+# Orquestador_OSINT
+
+Herramienta de automatización y orquestación para la recopilación de información de fuentes abiertas (OSINT).
+
+## Descripción
+
+**Orquestador_OSINT** es una solución diseñada para automatizar y centralizar el proceso de *Information Gathering* a partir de fuentes públicas. Su objetivo es ejecutar y gestionar de forma eficiente múltiples consultas de OSINT con mínima o nula interacción humana.
+
+## Disclaimer
+
+Esta herramienta está diseñada **solo para fines éticos, educativos y de pruebas** en entornos controlados donde se tenga permiso explícito del propietario del objetivo.
+
+**El autor no se hace responsable del mal uso que se pueda dar a esta herramienta.**
+
+## ÍNDICE
 1. [Descripción General](#descripción-general)  
 2. [Instalación](#instalación)  
 3. [Interfaz Web](#interfaz-web)  
